@@ -21,7 +21,7 @@ export default function Home() {
         <section className="grid-container section-border">
           <div className="col-span-12 p-5 md:p-10">
             <div className="flex flex-col md:flex-row items-center gap-6">
-              <h1 className="text-huge mb-12 leading-[0.85] tracking-tight">
+              <h1 className="text-large md:text-huge mb-12 leading-[0.85] tracking-tight">
                 I help clinics with multiple locations run smoother by fixing their booking and scheduling systems
               </h1>
               <div className="w-full h-100 border border-black">
