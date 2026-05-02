@@ -7,11 +7,11 @@ export default function Home() {
     <ViewTransition>
       <main className="flex flex-col min-h-screen selection:bg-black selection:text-white">
         {/* Navigation */}
-        <nav className="grid-container flex-row section-border sticky top-0 bg-[#fdfdfd]/80 backdrop-blur-md z-50">
-          <div className="col-span-6 p-3 py-2 border-r border-black h-full flex items-center">
+        <nav className="grid-container !flex flex-row justify-between items-center section-border sticky top-0 bg-[#fdfdfd]/80 backdrop-blur-md z-50">
+          <div className="p-3 py-2 border-r border-black h-full flex items-center">
             <span className="font-bold tracking-tighter text-2xl uppercase">Binda Systems</span>
           </div>
-          <div className="col-span-6 p-3 py-2 flex justify-end items-center gap-8">
+          <div className="p-3 py-2 flex justify-end items-center gap-8">
             <Link href="#work" className="label hover:underline hidden md:block">Case Study</Link>
             <Link href="#contact" className="label px-4 py-2 border border-black hover:bg-black hover:text-white transition-colors">Book a call</Link>
           </div>
