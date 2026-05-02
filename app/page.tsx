@@ -80,7 +80,7 @@ export default function Home() {
         <section className="grid-container section-border">
           <div className="col-span-12 p-8 md:p-8 bg-black text-white">
             <span className="label text-white opacity-40">Our Solution</span>
-            <h2 className="text-large mt-6 mb-16 leading-none">I don’t install generic booking tools. <br /> I build systems around how you operate.</h2>
+            <h2 className="text-large mt-6 mb-16 leading-none">I don’t install generic booking tools. I build systems around how you operate.</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
               <div className="group">
                 <div className="h-px w-full bg-white/20 mb-8 group-hover:bg-white transition-colors" />
@@ -108,9 +108,9 @@ export default function Home() {
 
         {/* Case Study */}
         <section id="work" className="grid-container section-border">
-          <div className="col-span-6 p-8 md:p-24 border-r border-black">
+          <div className="col-span-6 p-4 md:p-4 border-r border-black">
             <span className="label">Case Study</span>
-            <h2 className="text-huge mt-8 mb-12 leading-none">Goud <br /> Echo</h2>
+            <h2 className="text-huge mt-8 mb-12 leading-none">Goud Echo</h2>
             <div className="flex gap-10 mb-12 opacity-60 label">
               <span>Client: Goud Echo</span>
               <span>Engagement: 3+ years</span>
@@ -145,8 +145,8 @@ export default function Home() {
               </div>
               
               <div className="pt-8">
-                <div className="p-8 border border-black bg-zinc-50 relative overflow-hidden group">
-                  <p className="text-2xl italic relative z-10">The system was shaped over time based on real usage—not assumptions.</p>
+                <div className="p-4 border border-black bg-zinc-50 relative overflow-hidden group">
+                  <p className="text-md italic relative z-10">The system was shaped over time based on real usage—not assumptions.</p>
                 </div>
               </div>
             </div>
@@ -186,11 +186,11 @@ export default function Home() {
         {/* CTA */}
         <section id="contact" className="grid-container section-border">
           <div className="col-span-12 p-20 md:p-48 text-center bg-black text-white">
-            <h2 className="text-huge mb-12 leading-none">If managing bookings across locations is becoming a problem, let’s fix it.</h2>
-            <p className="text-2xl opacity-60 mb-16 max-w-4xl mx-auto leading-relaxed">
+            <h2 className="text-large md:text-huge mb-12 leading-none">If managing bookings across locations is becoming a problem, let’s fix it.</h2>
+            <p className="text-lg md:text-2xl opacity-60 mb-16 max-w-4xl mx-auto leading-relaxed">
               Book a call and we’ll look at how your current system is holding you back.
             </p>
-            <Link href="mailto:hello@bindasystems.com" className="inline-block px-12 py-6 bg-white text-black text-2xl font-bold uppercase hover:bg-zinc-200 transition-colors">Book a call</Link>
+            <Link href="mailto:hello@bindasystems.com" className="inline-block px-12 py-6 bg-white text-black text-xl md:text-2xl font-bold uppercase hover:bg-zinc-200 transition-colors">Book a call</Link>
           </div>
         </section>
 
