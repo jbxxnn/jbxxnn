@@ -20,13 +20,13 @@ export default function Home() {
         {/* Hero */}
         <section className="grid-container section-border">
           <div className="col-span-12 p-5 md:p-10">
-            <div className="flex items-center gap-6">
-            <h1 className="text-huge mb-12 leading-[0.85] tracking-tight">
-              I help clinics with multiple locations run smoother by fixing their booking and scheduling systems
-            </h1>
-            <div className="w-full h-100 border border-black">
-              <Image src="/IMG_2467.jpg" alt="hero" width={100} height={100} className="object-cover w-full h-full" />
-            </div>
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <h1 className="text-huge mb-12 leading-[0.85] tracking-tight">
+                I help clinics with multiple locations run smoother by fixing their booking and scheduling systems
+              </h1>
+              <div className="w-full h-100 border border-black">
+                <Image src="/IMG_2467.jpg" alt="hero" width={1000} height={1000} className="object-cover w-full h-full" />
+              </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
               <div className="md:col-span-8">
