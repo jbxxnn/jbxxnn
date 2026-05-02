@@ -7,7 +7,7 @@ export default function Home() {
     <ViewTransition>
       <main className="flex flex-col min-h-screen selection:bg-black selection:text-white">
         {/* Navigation */}
-        <nav className="grid-container section-border sticky top-0 bg-[#fdfdfd]/80 backdrop-blur-md z-50">
+        <nav className="grid-container flex-row section-border sticky top-0 bg-[#fdfdfd]/80 backdrop-blur-md z-50">
           <div className="col-span-6 p-3 py-2 border-r border-black h-full flex items-center">
             <span className="font-bold tracking-tighter text-2xl uppercase">Binda Systems</span>
           </div>
@@ -20,16 +20,16 @@ export default function Home() {
         {/* Hero */}
         <section className="grid-container section-border">
           <div className="col-span-12 p-5 md:p-10">
-            <div className="flex flex-col md:flex-row items-center gap-6">
+            <div className="flex flex-col md:flex-row gap-6">
               <h1 className="text-large md:text-huge mb-12 leading-[0.85] tracking-tight">
                   I help clinics with multiple locations run smoother by fixing their booking and scheduling systems
                 </h1>
-              <div className="w-full h-[400px] border border-black overflow-hidden">
+              <div className="w-full h-[400px] border border-black overflow-hidden mb-12">
                 <Image 
               src="/case-study-goud-echo.png" 
               alt="Goud Echo System Dashboard" 
-              width={400} 
-              height={400} 
+              width={1000} 
+              height={1000} 
               className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
             />
                 </div>
