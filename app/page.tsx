@@ -8,8 +8,8 @@ export default function Home() {
       <main className="flex flex-col min-h-screen selection:bg-black selection:text-white">
         {/* Navigation */}
         <nav className="grid-container !flex flex-row justify-between items-center section-border sticky top-0 bg-[#fdfdfd]/80 backdrop-blur-md z-50">
-          <div className="p-3 py-2 border-r border-black h-full flex items-center">
-            <span className="font-bold tracking-tighter text-2xl uppercase">Binda Systems</span>
+          <div className="p-3 py-2 border-r-0 md:border-r border-black h-full flex items-center">
+            <span className="font-bold tracking-tighter text-lg md:text-2xl uppercase">Binda Systems</span>
           </div>
           <div className="p-3 py-2 flex justify-end items-center gap-8">
             <Link href="#work" className="label hover:underline hidden md:block">Case Study</Link>
