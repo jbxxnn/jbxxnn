@@ -163,7 +163,7 @@ export default function Home() {
 
         {/* How We Work */}
         <section id="process" className="grid-container section-border">
-          <div className="col-span-12 p-12 md:p-32">
+          <div className="col-span-12 p-4 md:p-8">
             <span className="label">Trust</span>
             <h2 className="text-huge mt-8 mb-20 leading-none">How I work</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 border-t border-l border-black">
@@ -173,9 +173,9 @@ export default function Home() {
                 { step: "3", title: "Design your system", desc: "Built specifically for your locations, staff, and workflow." },
                 { step: "4", title: "Refine over time", desc: "We improve the system based on real usage—not guesses." }
               ].map((item, i) => (
-                <div key={i} className="p-10 border-r border-b border-black hover:bg-black hover:text-white transition-all duration-500 group">
+                <div key={i} className="p-4 border-r border-b border-black hover:bg-black hover:text-white transition-all duration-500 group">
                   <span className="text-5xl font-bold block mb-10 transition-transform group-hover:scale-110 origin-left">{item.step}</span>
-                  <h3 className="text-2xl mb-6 uppercase font-bold">{item.title}</h3>
+                  <h3 className="text-2xl mb-2 uppercase font-bold">{item.title}</h3>
                   <p className="opacity-60 group-hover:opacity-80 text-lg leading-relaxed">{item.desc}</p>
                 </div>
               ))}
@@ -185,7 +185,7 @@ export default function Home() {
 
         {/* CTA */}
         <section id="contact" className="grid-container section-border">
-          <div className="col-span-12 p-20 md:p-48 text-center bg-black text-white">
+          <div className="col-span-12 p-4 md:p-8 text-center bg-black text-white">
             <h2 className="text-large md:text-huge mb-12 leading-none">If managing bookings across locations is becoming a problem, let’s fix it.</h2>
             <p className="text-lg md:text-2xl opacity-60 mb-16 max-w-4xl mx-auto leading-relaxed">
               Book a call and we’ll look at how your current system is holding you back.
@@ -195,7 +195,7 @@ export default function Home() {
         </section>
 
         {/* Footer */}
-        <footer className="grid-container p-16">
+        <footer className="grid-container p-4">
           <div className="col-span-12 flex flex-col md:flex-row justify-between items-end gap-10">
             <div className="flex flex-col gap-4">
               <span className="font-bold tracking-tighter text-3xl uppercase">Binda Systems</span>
