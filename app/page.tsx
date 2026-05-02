@@ -24,7 +24,7 @@ export default function Home() {
               <h1 className="text-large md:text-huge mb-12 leading-[0.85] tracking-tight">
                 I help clinics with multiple locations run smoother by fixing their booking and scheduling systems
               </h1>
-              <div className="w-full h-100 border border-black">
+              <div className="w-full h-[400px] border border-black overflow-hidden">
                 <Image src="/IMG_2467.jpg" alt="hero" width={1000} height={1000} className="object-cover w-full h-full" />
               </div>
             </div>
