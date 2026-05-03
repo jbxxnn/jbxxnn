@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ViewTransition } from "react";
 
 import goudEchoImage from "@/public/case-study-goud-echo.png";
-import studioImage from "@/public/IMG_2467.jpg";
 
 const wallNotes = [
   {
@@ -88,10 +87,11 @@ export default function Home() {
 
           <div className="studio-photo" aria-label="A studio wall used as the visual model for this portfolio">
             <Image
-              src={studioImage}
+              src="/IMG_2467.jpg"
               alt="A design studio desk with lamps, monitors, papers, and a wire wall filled with pinned references."
+              width={736}
+              height={981}
               priority
-              placeholder="blur"
               sizes="(max-width: 900px) 100vw, 58vw"
               className="studio-photo__image"
             />
