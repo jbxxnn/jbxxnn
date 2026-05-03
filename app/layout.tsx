@@ -8,8 +8,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Multi-Location Clinic Systems | Booking & Scheduling Optimization",
-  description: "I help clinics with multiple locations run smoother by fixing their booking and scheduling systems with custom-designed solutions.",
+  title: "Binda Systems | Digital Studio for Clinic Operations",
+  description:
+    "A studio-style portfolio for custom booking, scheduling, and operations systems for multi-location clinics.",
 };
 
 export default function RootLayout({

@@ -2,213 +2,187 @@ import Image from "next/image";
 import Link from "next/link";
 import { ViewTransition } from "react";
 
+import goudEchoImage from "@/public/case-study-goud-echo.png";
+import studioImage from "@/public/IMG_2467.jpg";
+
+const wallNotes = [
+  {
+    label: "01 / Audit",
+    title: "Map the way work really moves",
+    body: "I sit with the messy parts first: teams, locations, bookings, handoffs, reminders, and the moments where staff quietly work around the system.",
+  },
+  {
+    label: "02 / Build",
+    title: "Turn operations into a calmer tool",
+    body: "The interface, automations, permissions, and backend flows are shaped around the clinic instead of forcing the clinic around a generic platform.",
+  },
+  {
+    label: "03 / Refine",
+    title: "Keep improving from live use",
+    body: "After launch, the work continues through real feedback, clearer defaults, fewer clicks, and sharper reporting.",
+  },
+];
+
+const workSignals = [
+  "Multi-location staff assignment",
+  "Simplified shift creation",
+  "Clear booking management",
+  "Automated reminders",
+  "Backend workflow cleanup",
+  "Usage-led product refinement",
+];
+
+const deskItems = [
+  {
+    title: "What I notice",
+    body: "Where teams lose time, where patients wait, where admins repeat themselves, and where the system hides important context.",
+  },
+  {
+    title: "What I make",
+    body: "Custom booking systems, scheduling flows, operational dashboards, reminder logic, and internal tools that feel obvious to use.",
+  },
+  {
+    title: "What improves",
+    body: "Less coordination, clearer staffing, faster booking work, and a system that can keep changing with the clinic.",
+  },
+];
+
 export default function Home() {
   return (
     <ViewTransition>
-      <main className="flex flex-col min-h-screen selection:bg-black selection:text-white">
-        {/* Navigation */}
-        <nav className="grid-container !flex flex-row justify-between items-center section-border sticky top-0 bg-[#fdfdfd]/80 backdrop-blur-md z-50">
-          <div className="p-3 py-2 border-r-0 md:border-r border-black h-full flex items-center">
-            <span className="font-bold tracking-tighter text-lg md:text-2xl uppercase">Binda Systems</span>
-          </div>
-          <div className="p-3 py-2 flex justify-end items-center gap-8">
-            <Link href="#work" className="label hover:underline hidden md:block">Case Study</Link>
-            <Link href="#contact" className="label px-4 py-2 border border-black hover:bg-black hover:text-white transition-colors">Book a call</Link>
+      <main className="min-h-screen studio-shell selection:bg-black selection:text-white">
+        <nav className="studio-nav" aria-label="Primary navigation">
+          <Link href="#studio" className="studio-brand">
+            Binda Systems
+          </Link>
+          <div className="studio-nav__links">
+            <Link href="#wall">Studio wall</Link>
+            <Link href="#work">Work</Link>
+            <Link href="#contact" className="studio-nav__cta">
+              Book a call
+            </Link>
           </div>
         </nav>
 
-        {/* Hero */}
-        <section className="grid-container section-border">
-          <div className="col-span-12 p-5 md:p-10">
-            <div className="flex flex-col md:flex-row gap-6">
-              <h1 className="text-large md:text-huge mb-12 leading-[0.85] tracking-tight">
-                  I help clinics with multiple locations run smoother by fixing their booking and scheduling systems
-                </h1>
-              <div className="w-full h-[400px] border border-black overflow-hidden mb-12">
-                <Image 
-              src="/case-study-goud-echo.png" 
-              alt="Goud Echo System Dashboard" 
-              width={1000} 
-              height={1000} 
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+        <section id="studio" className="studio-hero">
+          <div className="studio-hero__copy">
+            <p className="label">Digital studio / operations systems</p>
+            <h1>
+              A working studio for clinics that have outgrown generic booking
+              tools.
+            </h1>
+            <p className="studio-lede">
+              I design and refine custom systems for multi-location clinics, so
+              the way staff schedule, assign, remind, and manage patients feels
+              like the way the clinic actually operates.
+            </p>
+            <div className="studio-actions">
+              <Link href="#work" className="btn">
+                View the board
+              </Link>
+              <Link href="#contact" className="text-link">
+                Start a conversation
+              </Link>
+            </div>
+          </div>
+
+          <div className="studio-photo" aria-label="A studio wall used as the visual model for this portfolio">
+            <Image
+              src={studioImage}
+              alt="A design studio desk with lamps, monitors, papers, and a wire wall filled with pinned references."
+              priority
+              placeholder="blur"
+              sizes="(max-width: 900px) 100vw, 58vw"
+              className="studio-photo__image"
             />
-                </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end">
-              <div className="md:col-span-8">
-                <p className="text-2xl md:text-3xl font-medium max-w-3xl leading-tight opacity-80">
-                  I design and refine custom systems based on how your clinic actually operates—so your team spends less time managing bookings and more time serving patients.
-                </p>
-              </div>
-              <div className="md:col-span-4 flex justify-end">
-                <Link href="#contact" className="btn text-xl">Book a call</Link>
-              </div>
+            <div className="studio-photo__caption">
+              <span>Reference wall</span>
+              <strong>Every project starts as an operational map.</strong>
             </div>
           </div>
         </section>
 
-        {/* Problem Section */}
-        <section id="problem" className="grid-container section-border">
-          <div className="col-span-4 p-5 md:p-5 border-r border-black flex flex-col justify-between">
-            <div>
-              <span className="label">The Problem</span>
-              <h2 className="text-large mt-6 leading-none">Your booking system is probably slowing you down</h2>
-            </div>
-            {/* <div className="mt-20 opacity-30 label">Qualification</div> */}
+        <section id="wall" className="studio-wall">
+          <div className="section-kicker">
+            <p className="label">Pinned thinking</p>
+            <h2>The portfolio becomes the wall: visible decisions, constraints, and outcomes.</h2>
           </div>
-          <div className="col-span-8 grid grid-cols-1 md:grid-cols-2">
-            <div className="p-5 md:p-5 border-b md:border-r border-black hover:bg-zinc-50 transition-colors">
-              <h3 className="text-xl mb-1">Staff Management</h3>
-              <p className="opacity-70 text-lg leading-relaxed">Staff are hard to assign across locations</p>
-            </div>
-            <div className="p-5 md:p-5 border-b border-black hover:bg-zinc-50 transition-colors">
-              <h3 className="text-xl mb-1">Shift Creation</h3>
-              <p className="opacity-70 text-lg leading-relaxed">Creating shifts is confusing or time-consuming</p>
-            </div>
-            <div className="p-5 md:p-5 border-b md:border-b-0 md:border-r border-black hover:bg-zinc-50 transition-colors">
-              <h3 className="text-xl mb-1">Coordination</h3>
-              <p className="opacity-70 text-lg leading-relaxed">Admins spend too much time coordinating availability</p>
-            </div>
-            <div className="p-5 md:p-5 hover:bg-zinc-50 transition-colors">
-              <h3 className="text-xl mb-1">Misalignment</h3>
-              <p className="opacity-70 text-lg leading-relaxed">Your system doesn’t reflect how your clinic actually works</p>
-            </div>
+          <div className="wall-grid">
+            {wallNotes.map((note, index) => (
+              <article key={note.title} className={`pin-note pin-note--${index + 1}`}>
+                <span>{note.label}</span>
+                <h3>{note.title}</h3>
+                <p>{note.body}</p>
+              </article>
+            ))}
           </div>
         </section>
 
-        {/* Solution Section */}
-        <section className="grid-container section-border">
-          <div className="col-span-12 p-8 md:p-8 bg-black text-white">
-            <span className="label text-white opacity-40">Our Solution</span>
-            <h2 className="text-large mt-6 mb-16 leading-none">I don’t install generic booking tools. I build systems around how you operate.</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-              <div className="group">
-                <div className="h-px w-full bg-white/20 mb-8 group-hover:bg-white transition-colors" />
-                <h3 className="text-xl mb-2 text-white uppercase font-bold">Understanding</h3>
-                <p className="opacity-50 text-lg">Understanding your workflow</p>
-              </div>
-              <div className="group">
-                <div className="h-px w-full bg-white/20 mb-8 group-hover:bg-white transition-colors" />
-                <h3 className="text-xl mb-2 text-white uppercase font-bold">Identifying</h3>
-                <p className="opacity-50 text-lg">Identifying inefficiencies</p>
-              </div>
-              <div className="group">
-                <div className="h-px w-full bg-white/20 mb-8 group-hover:bg-white transition-colors" />
-                <h3 className="text-xl mb-2 text-white uppercase font-bold">Building</h3>
-                <p className="opacity-50 text-lg">Building a system tailored to your structure</p>
-              </div>
-              <div className="group">
-                <div className="h-px w-full bg-white/20 mb-8 group-hover:bg-white transition-colors" />
-                <h3 className="text-xl mb-2 text-white uppercase font-bold">Improving</h3>
-                <p className="opacity-50 text-lg">Continuously improving it based on real usage</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Case Study */}
-        <section id="work" className="grid-container section-border">
-          <div className="col-span-6 p-4 md:p-4 border-r border-black">
-            <span className="label">Case Study</span>
-            <h2 className="text-huge mt-8 mb-12 leading-none">Goud Echo</h2>
-            <div className="flex gap-10 mb-12 opacity-60 label">
-              <span>Client: Goud Echo</span>
-              <span>Engagement: 3+ years</span>
-            </div>
-            
-            <div className="space-y-12">
-              <div className="grid grid-cols-1 gap-12">
-                <div>
-                  <h4 className="font-bold uppercase text-xs tracking-widest mb-4 opacity-40">Problem</h4>
-                  <p className="opacity-70 text-xl leading-relaxed">Their booking system couldn’t handle multi-location scheduling. Admins struggled to assign staff properly, and shift creation was complicated.</p>
-                </div>
-                <div>
-                  <h4 className="font-bold uppercase text-xs tracking-widest mb-4 opacity-40">Approach</h4>
-                  <p className="opacity-70 text-xl leading-relaxed mb-6">Instead of forcing a fixed solution, I built and refined a custom system over time based on how they operate.</p>
-                  <ul className="list-none opacity-70 text-base grid grid-cols-2 gap-4">
-                    <li className="flex gap-2"><span>—</span> Multi-location staff assignment</li>
-                    <li className="flex gap-2"><span>—</span> Simplified shift creation</li>
-                    <li className="flex gap-2"><span>—</span> Clear booking management</li>
-                    <li className="flex gap-2"><span>—</span> Automated backend workflows</li>
-                    <li className="flex gap-2"><span>—</span> Custom reminders</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-bold uppercase text-xs tracking-widest mb-4 opacity-40">Outcome</h4>
-                  <ul className="list-none opacity-70 text-xl space-y-3 font-medium">
-                    <li className="flex gap-2"><span>—</span> Shift creation became simple and intuitive</li>
-                    <li className="flex gap-2"><span>—</span> Staff assignment across locations is now clear</li>
-                    <li className="flex gap-2"><span>—</span> Booking management is organized and easy to track</li>
-                    <li className="flex gap-2"><span>—</span> Daily operations require less coordination</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="pt-8">
-                <div className="p-4 border border-black bg-zinc-50 relative overflow-hidden group">
-                  <p className="text-md italic relative z-10">The system was shaped over time based on real usage—not assumptions.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-span-6 p-0 relative min-h-[800px] overflow-hidden">
-            <Image 
-              src="/case-study-goud-echo.png" 
-              alt="Goud Echo System Dashboard" 
-              fill 
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+        <section id="work" className="case-board">
+          <div className="case-board__image">
+            <Image
+              src={goudEchoImage}
+              alt="A product interface screenshot for the Goud Echo booking and scheduling system."
+              placeholder="blur"
+              sizes="(max-width: 900px) 100vw, 46vw"
+              className="case-board__screen"
             />
           </div>
-        </section>
-
-        {/* How We Work */}
-        <section id="process" className="grid-container section-border">
-          <div className="col-span-12 p-4 md:p-8">
-            <span className="label">Trust</span>
-            <h2 className="text-huge mt-8 mb-20 leading-none">How I work</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 border-t border-l border-black">
-              {[
-                { step: "1", title: "Understand your operations", desc: "We break down how your clinic actually runs." },
-                { step: "2", title: "Identify inefficiencies", desc: "Where time is wasted, confusion happens, or mistakes occur." },
-                { step: "3", title: "Design your system", desc: "Built specifically for your locations, staff, and workflow." },
-                { step: "4", title: "Refine over time", desc: "We improve the system based on real usage—not guesses." }
-              ].map((item, i) => (
-                <div key={i} className="p-4 border-r border-b border-black hover:bg-black hover:text-white transition-all duration-500 group">
-                  <span className="text-5xl font-bold block mb-10 transition-transform group-hover:scale-110 origin-left">{item.step}</span>
-                  <h3 className="text-2xl mb-2 uppercase font-bold">{item.title}</h3>
-                  <p className="opacity-60 group-hover:opacity-80 text-lg leading-relaxed">{item.desc}</p>
-                </div>
+          <div className="case-board__content">
+            <p className="label">Case file / Goud Echo</p>
+            <h2>A long-running clinic system shaped through real use.</h2>
+            <p>
+              Goud Echo needed booking and scheduling software that could handle
+              multiple locations without making staff assignment, shift creation,
+              and daily coordination harder than the work itself.
+            </p>
+            <div className="signal-board" aria-label="Project capabilities">
+              {workSignals.map((signal) => (
+                <span key={signal}>{signal}</span>
               ))}
             </div>
+            <div className="case-outcome">
+              <strong>Outcome</strong>
+              <p>
+                Shift creation became clearer, staff assignment across locations
+                became easier to track, and daily booking work required less
+                manual coordination.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section id="contact" className="grid-container section-border">
-          <div className="col-span-12 p-4 md:p-8 text-center bg-black text-white">
-            <h2 className="text-large md:text-huge mb-12 leading-none">If managing bookings across locations is becoming a problem, let’s fix it.</h2>
-            <p className="text-lg md:text-2xl opacity-60 mb-16 max-w-4xl mx-auto leading-relaxed">
-              Book a call and we’ll look at how your current system is holding you back.
-            </p>
-            <Link href="mailto:hello@bindasystems.com" className="inline-block px-12 py-6 bg-white text-black text-xl md:text-2xl font-bold uppercase hover:bg-zinc-200 transition-colors">Book a call</Link>
+        <section className="studio-desk">
+          <div className="section-kicker section-kicker--desk">
+            <p className="label">The desk</p>
+            <h2>Useful systems come from observing the working surface, not just the brief.</h2>
+          </div>
+          <div className="desk-grid">
+            {deskItems.map((item) => (
+              <article key={item.title} className="desk-card">
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="grid-container p-4">
-          <div className="col-span-12 flex flex-col md:flex-row justify-between items-end gap-10">
-            <div className="flex flex-col gap-4">
-              <span className="font-bold tracking-tighter text-3xl uppercase">Binda Systems</span>
-              <p className="label max-w-xs opacity-40 text-[10px]">Specific. Problem-first. Real Experience. Thinking Partner.</p>
-            </div>
-            <div className="flex flex-col items-end gap-6">
-              <div className="flex gap-10 label text-[10px]">
-                <Link href="#" className="hover:text-black">LinkedIn</Link>
-                <Link href="#" className="hover:text-black">Twitter</Link>
-                <Link href="#" className="hover:text-black">Email</Link>
-              </div>
-              <span className="opacity-20 text-[10px] uppercase tracking-[0.3em]">&copy; 2026 — ALL RIGHTS RESERVED</span>
-            </div>
+        <section id="contact" className="contact-slab">
+          <div>
+            <p className="label">Open studio</p>
+            <h2>If booking across locations is becoming hard to manage, let’s put it on the wall.</h2>
+          </div>
+          <Link href="mailto:hello@bindasystems.com" className="contact-button">
+            Book a call
+          </Link>
+        </section>
+
+        <footer className="studio-footer">
+          <span>Binda Systems</span>
+          <div>
+            <Link href="mailto:hello@bindasystems.com">Email</Link>
+            <Link href="#">LinkedIn</Link>
+            <Link href="#">Twitter</Link>
           </div>
         </footer>
       </main>
