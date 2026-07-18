@@ -35,10 +35,11 @@ export default function Home() {
           </p>
           <ThemeSwitcher />
         </footer> */}
-        <div className="pb-[8px] font-public-sans text-[14px] underline flex gap-2 max-w-4xl w-full">
-<p>work</p> 
-<p>projects</p>
-<p>notes</p>
+        <div className="p-5 font-public-sans text-[14px] underline flex gap-2 max-w-4xl w-full">
+<p>Work</p> 
+<p>Projects</p>
+<p>Notes</p>
+<p>Upwork</p>
         </div>
         </div>
     </main>
