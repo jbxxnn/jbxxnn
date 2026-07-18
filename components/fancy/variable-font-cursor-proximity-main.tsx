@@ -12,7 +12,7 @@ export default function Preview() {
       className="rounded-lg items-center justify-center font-piazzolla p-2 cursor-pointer relative overflow-hidden"
       ref={containerRef}
     >
-      <div className="items-center justify-center grid text-justify">
+      <div className="items-center justify-center grid text-left">
         <VariableFontCursorProximity
           className="text-3xl lg:text-4xl !leading-tight -m-4 p-2 italic"
           fromFontVariationSettings="'wght' 400, 'slnt' 0"
@@ -22,7 +22,7 @@ export default function Preview() {
           containerRef={containerRef}
         >
           <>
-    He designs and develops thoughtful websites focused on{" "}
+    He designs and develops <span className="not-italic font-public-sans">thoughtful</span> websites focused on{" "}
     performance, accessibility,
     usability, and long-term maintainability for <span className="not-italic font-public-sans">businesses</span>.
   </>
