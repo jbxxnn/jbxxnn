@@ -52,7 +52,7 @@ export function WorkSection() {
                 </p>
               </div>
 
-              <div className="text-left sm:text-right sm:hidden">
+              <div className="text-left sm:text-right hidden">
                 <p className="font-public-sans text-[12px] uppercase">
                   {item.role}
                 </p>
