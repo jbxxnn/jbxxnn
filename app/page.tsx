@@ -1,12 +1,12 @@
 
-import { ThemeSwitcher } from "@/components/theme-switcher";
+// import { ThemeSwitcher } from "@/components/theme-switcher";
 import Preview from "@/components/fancy/variable-font-cursor-proximity-main";
 import { WorkSection } from "@/components/work-section";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center">
-      <div className="flex-1 w-full flex flex-col gap-20 items-center p-[4px]">
+    <main className="min-h-screen flex flex-col items-center p-[4px]">
+      <div className="flex-1 w-full flex flex-col gap-20 items-center">
         {/* <nav className="w-full flex justify-center h-20">
           <div className="w-full max-w-5xl flex flex-col gap-4 justify-center items-center p-5 px-5 text-[17px]">
             <p className="items-center max-w-2xl font-piazzolla font-medium"><span className="font-bold font-public-sans">Jibrin</span> is a web developer and independent builder who creates websites, digital products, and useful tools for businesses. You can connect with him via <span className="font-bold font-public-sans">jibrin@jbxxnn.com.</span></p>
@@ -18,7 +18,7 @@ export default function Home() {
             <Preview />
             <WorkSection />
         </div>
- <ThemeSwitcher />
+ {/* <ThemeSwitcher /> */}
         
 
         {/* <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
@@ -35,7 +35,12 @@ export default function Home() {
           </p>
           <ThemeSwitcher />
         </footer> */}
-      </div>
+        <div className="pb-[8px] font-public-sans text-[14px] underline flex gap-2 max-w-4xl w-full">
+<p>work</p> 
+<p>projects</p>
+<p>notes</p>
+        </div>
+        </div>
     </main>
   );
 }
