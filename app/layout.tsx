@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Piazzolla, Public_Sans } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
@@ -13,8 +13,15 @@ export const metadata: Metadata = {
   description: "The fastest way to build apps with Next.js and Supabase",
 };
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const piazzolla = Piazzolla({
+  variable: "--font-piazzolla",
+  display: "swap",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
+
+const publicSans = Public_Sans({
+  variable: "--font-public-sans",
   display: "swap",
   subsets: ["latin"],
 });
@@ -26,7 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
+      <body
+        className={`${piazzolla.variable} ${publicSans.variable} antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
