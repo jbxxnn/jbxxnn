@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ArrowUpRight, Minimize2, X } from "lucide-react";
 
 type WorkItem = {
   name: string;
@@ -55,6 +56,7 @@ const workItems: WorkItem[] = [
 
 export function WorkSection() {
   const [activeItem, setActiveItem] = useState<WorkItem | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     if (!activeItem) return;
@@ -75,6 +77,16 @@ export function WorkSection() {
     };
   }, [activeItem]);
 
+  const handleOpen = (item: WorkItem) => {
+    setActiveItem(item);
+    setIsExpanded(false);
+  };
+
+  const handleClose = () => {
+    setActiveItem(null);
+    setIsExpanded(false);
+  };
+
   return (
     <section className="max-w-2xl w-full">
       <div>
@@ -89,7 +101,7 @@ export function WorkSection() {
             <button
               key={item.name}
               type="button"
-              onClick={() => setActiveItem(item)}
+              onClick={() => handleOpen(item)}
               className={[
                 "grid w-full gap-4 bg-container px-5 py-3 mb-[2px] text-left transition-colors duration-300 hover:cursor-pointer hover:bg-foreground/5 sm:grid-cols-[minmax(0,1fr)_auto]",
                 // index < workItems.length - 1 ? "border-b border-black/30" : "",
@@ -114,53 +126,138 @@ export function WorkSection() {
       {activeItem ? (
         <div
           className="fixed inset-0 z-50 flex items-end bg-black/45 p-3 sm:items-center sm:justify-center sm:p-6"
-          onClick={() => setActiveItem(null)}
+          onClick={() => {
+            if (!isExpanded) {
+              handleClose();
+            }
+          }}
         >
           <div
             role="dialog"
             aria-modal="true"
             aria-labelledby="work-modal-title"
-            className="w-full max-w-xl rounded-[1.25rem] bg-background p-5 shadow-2xl sm:p-6"
+            className={[
+              "flex w-full flex-col overflow-hidden bg-background shadow-2xl transition-all duration-300 ease-out",
+              "h-[100dvh] rounded-none sm:h-auto",
+              isExpanded
+                ? "sm:h-[92vh] sm:max-w-[1100px] sm:rounded-[1.5rem]"
+                : "sm:max-h-[80vh] sm:max-w-2xl sm:rounded-[1.25rem]",
+            ].join(" ")}
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
-                  {activeItem.role} • {activeItem.years}
-                </p>
-                <h3
-                  id="work-modal-title"
-                  className="mt-2 font-public-sans text-2xl font-semibold leading-none"
-                >
-                  {activeItem.name}
-                </h3>
-                <p className="mt-2 font-public-sans text-[15px] text-foreground/70">
-                  {activeItem.description}
-                </p>
-              </div>
+            <div className="border-b border-foreground/10 px-5 py-4 sm:px-6 sm:py-5">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
+                    {activeItem.role} • {activeItem.years}
+                  </p>
+                  <h3
+                    id="work-modal-title"
+                    className="mt-2 font-public-sans text-2xl font-semibold leading-none sm:text-3xl"
+                  >
+                    {activeItem.name}
+                  </h3>
+                  <p className="mt-2 font-public-sans text-[15px] text-foreground/70">
+                    {activeItem.description}
+                  </p>
+                </div>
 
-              <button
-                type="button"
-                onClick={() => setActiveItem(null)}
-                className="rounded-full border border-foreground/15 px-3 py-1 text-[13px] text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
-              >
-                Close
-              </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsExpanded((current) => !current)}
+                    className="inline-flex rounded-full border border-foreground/15 p-2 text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
+                    aria-label={isExpanded ? "Collapse work details" : "Expand work details"}
+                    title={isExpanded ? "Collapse" : "Expand"}
+                  >
+                    {isExpanded ? (
+                      <Minimize2 className="size-4" />
+                    ) : (
+                      <ArrowUpRight className="size-4" />
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleClose}
+                    className="inline-flex rounded-full border border-foreground/15 p-2 text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
+                    aria-label="Close work details"
+                  >
+                    <X className="size-4" />
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <p className="mt-6 font-public-sans text-[15px] leading-7 text-foreground/85">
-              {activeItem.overview}
-            </p>
+            <div
+              className={[
+                "min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:px-6 sm:py-6",
+                isExpanded
+                  ? "sm:grid sm:grid-cols-[minmax(0,1.25fr)_minmax(240px,0.75fr)] sm:gap-10"
+                  : "",
+              ].join(" ")}
+            >
+              <div>
+                <div>
+                  <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
+                    Overview
+                  </p>
+                  <p className="mt-3 font-public-sans text-[15px] leading-7 text-foreground/85 sm:text-[16px]">
+                    {activeItem.overview}
+                  </p>
+                </div>
 
-            <div className="mt-6">
-              <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
-                Notes
-              </p>
-              <ul className="mt-3 space-y-3 font-public-sans text-[15px] leading-6 text-foreground/85">
-                {activeItem.highlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
+                <div className="mt-8">
+                  <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
+                    Notes
+                  </p>
+                  <ul className="mt-3 space-y-3 font-public-sans text-[15px] leading-7 text-foreground/85">
+                    {activeItem.highlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <aside className="mt-8 border-t border-foreground/10 pt-6 sm:mt-0 sm:border-t-0 sm:border-l sm:pl-8 sm:pt-0">
+                <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
+                  Snapshot
+                </p>
+                <dl className="mt-4 space-y-5">
+                  <div>
+                    <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
+                      Company
+                    </dt>
+                    <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
+                      {activeItem.name}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
+                      Focus
+                    </dt>
+                    <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
+                      {activeItem.description}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
+                      Role
+                    </dt>
+                    <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
+                      {activeItem.role}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
+                      Timeline
+                    </dt>
+                    <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
+                      {activeItem.years}
+                    </dd>
+                  </div>
+                </dl>
+              </aside>
             </div>
           </div>
         </div>
