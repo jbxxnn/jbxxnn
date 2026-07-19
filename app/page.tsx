@@ -1,5 +1,6 @@
 
 // import { ThemeSwitcher } from "@/components/theme-switcher";
+import { CopyEmail } from "@/components/copy-email";
 import Preview from "@/components/fancy/variable-font-cursor-proximity-main";
 import { WorkSection } from "@/components/work-section";
 
@@ -14,7 +15,7 @@ export default function Home() {
         </div>
           </nav> */}
           <div className="flex-1 flex flex-col gap-20 max-w-4xl p-5">
-            <p className="items-center max-w-3xl font-public-sans font-medium"><span className="font-black font-piazzolla underline">Jibrin</span> is a web developer and independent builder creating websites and digital products. This is where he shares his work, projects, and notes. You can connect with him via <span className="font-black font-piazzolla underline italic">jibrin@jbxxnn.com</span></p>
+            <p className="items-center max-w-3xl font-public-sans font-medium"><span className="font-black font-piazzolla underline">Jibrin</span> is a web developer and independent builder creating websites and digital products. This is where he shares his work, projects, and notes. You can connect with him via <CopyEmail className="font-black font-piazzolla underline italic" email="jibrin@jbxxnn.com" /></p>
             <Preview />
             <WorkSection />
         </div>

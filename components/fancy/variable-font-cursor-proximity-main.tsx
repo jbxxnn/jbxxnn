@@ -22,7 +22,7 @@ export default function Preview() {
           containerRef={containerRef}
         >
           <>
-    He designs and develops <span className="not-italic font-public-sans">thoughtful</span> websites focused on{" "}
+    He designs and develops thoughtful websites focused on{" "}
     performance, accessibility,
     usability, and long-term maintainability for <span className="not-italic font-public-sans">businesses</span>.
   </>

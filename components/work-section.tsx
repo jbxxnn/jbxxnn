@@ -25,10 +25,10 @@ const workItems: WorkItem[] = [
     name: "Grassodenrider Architects",
     sector: "Construction",
     brief:
-      "On the occasion of their 15th anniversary, Grassodenridder Architects wanted an identity and website that reflected the growth and refinement of the agency. The existing appearance no longer did justice to the quality of their work and did not sufficiently show online what the agency stands for: timeless architecture in which interior, experience and environment form one whole. We developed a minimalist, characterful brand identity and a website that makes that vision felt, with a digital style that breathes peace, precision and craftsmanship.",
+      "On the occasion of their 15th anniversary, Grassodenridder Architects wanted an identity and website that reflected the growth and refinement of the agency. The existing appearance no longer did justice to the quality of their work and did not sufficiently show online what the agency stands for: timeless architecture in which interior, experience and environment form one whole. I developed a minimalist, characterful brand identity and a website that makes that vision felt, with a digital style that breathes peace, precision and craftsmanship.",
     expandedTitle: "A brand that captures the essence",
     expandedBody:
-      "The new identity translates the architectural vision of Grassodenridder Architecten into a powerful and timeless brand. With a refined logo, a clear typographic system and a subdued color palette, we created a style that exudes peace, precision and craftsmanship. The subtle line, generous white space and balanced compositions ensure a recognizable visual language that consistently returns in all expressions. This creates a brand that not only reflects the quality of the work, but also makes it palpable in every moment of contact.",
+      "The new identity translates the architectural vision of Grassodenridder Architecten into a powerful and timeless brand. With a refined logo, a clear typographic system and a subdued color palette, I created a style that exudes peace, precision and craftsmanship. The subtle line, generous white space and balanced compositions ensure a recognizable visual language that consistently returns in all expressions. This creates a brand that not only reflects the quality of the work, but also makes it palpable in every moment of contact.",
     client: "Grassodenrider Architects",
     focusMarket: "National",
     screenshots: ["Homepage", "Project overview"],
@@ -39,7 +39,7 @@ const workItems: WorkItem[] = [
     name: "Hardgraft",
     sector: "Fashion & Lifestyle",
     brief:
-      "Hardgraft creates timeless bags, footwear and leather accessories for people who value quality, character and thoughtful design. As an independent brand with a worldwide audience, they needed a digital environment that could communicate the craftsmanship behind each product while preserving the quiet, understated personality that defines the brand. We developed a refined e-commerce website that brings product, material and story together, creating an online experience that feels as considered and distinctive as the collection itself.",
+      "Hardgraft creates timeless bags, footwear and leather accessories for people who value quality, character and thoughtful design. As an independent brand with a worldwide audience, they needed a digital environment that could communicate the craftsmanship behind each product while preserving the quiet, understated personality that defines the brand. I developed a refined e-commerce website that brings product, material and story together, creating an online experience that feels as considered and distinctive as the collection itself.",
     expandedTitle: "A digital experience built around craftsmanship",
     expandedBody:
       "The website combines a restrained visual style with generous imagery and a clear product structure, allowing the materials, textures and details of each piece to take centre stage. Visitors can effortlessly explore bags, footwear and small leather goods while discovering the Italian craftsmanship and carefully selected materials behind the collection. Natural tones, spacious compositions and understated typography reinforce hardgraft's down-to-earth aesthetic. Detailed product presentations and stories about the leather, wool and production process give every item greater depth and make the brand's commitment to quality tangible. The result is a distinctive international webshop that does not compete for attention, but builds desire through simplicity, authenticity and craftsmanship.",
@@ -53,10 +53,10 @@ const workItems: WorkItem[] = [
     name: "Credifin Netherlands",
     sector: "Finance",
     brief:
-      "Credifin was looking for an identity and website that better suited the quality they deliver. The old appearance and structure no longer did justice to their story, while the website is an important channel with a lot of traffic and dozens of new accounts daily. As a modern debt collection platform with more than 20,000 customers, they were ready for the next step. We developed a mature brand identity and a lead-generating website that clearly shows what Credifin stands for.",
+      "Credifin was looking for an identity and website that better suited the quality they deliver. The old appearance and structure no longer did justice to their story, while the website is an important channel with a lot of traffic and dozens of new accounts daily. As a modern debt collection platform with more than 20,000 customers, they were ready for the next step. I developed a mature brand identity and a lead-generating website that clearly shows what Credifin stands for.",
     expandedTitle: "A brand that exudes trust",
     expandedBody:
-      "We developed a brand identity that combines strength and clarity with a human tone. From a sharpened logo and fresh color palette to an accessible tone of voice and illustration style. The new branding shows what Credifin stands for: transparency, decisiveness and an approachable approach that gives confidence. The result is an identity that is distinctive in the market and seamlessly aligns with the digital nature of the platform.",
+      "I developed a brand identity that combines strength and clarity with a human tone. From a sharpened logo and fresh color palette to an accessible tone of voice and illustration style. The new branding shows what Credifin stands for: transparency, decisiveness and an approachable approach that gives confidence. The result is an identity that is distinctive in the market and seamlessly aligns with the digital nature of the platform.",
     client: "Credifin Netherlands",
     focusMarket: "National",
     screenshots: ["Service overview", "Content page"],
@@ -67,14 +67,14 @@ const workItems: WorkItem[] = [
     name: "ETQ Amsterdam",
     sector: "Fashion & Lifestyle",
     brief:
-      "ETQ Amsterdam creates refined wardrobe essentials for men who value simplicity, quality and longevity. With a growing collection spanning footwear, clothing and accessories, the brand needed an online store that could present its products clearly without losing the clean and mature character at the heart of its identity. We created a minimalist e-commerce experience that combines strong product presentation with intuitive navigation, allowing customers to move effortlessly from inspiration to purchase.",
+      "ETQ Amsterdam creates refined wardrobe essentials for men who value simplicity, quality and longevity. With a growing collection spanning footwear, clothing and accessories, the brand needed an online store that could present its products clearly without losing the clean and mature character at the heart of its identity. I created a minimalist e-commerce experience that combines strong product presentation with intuitive navigation, allowing customers to move effortlessly from inspiration to purchase.",
     expandedTitle: "Less, but better",
     expandedBody:
       "The website translates ETQ’s philosophy into a restrained and confident digital experience. Generous imagery, neutral compositions and bold typography give every product room to stand out, while the structured navigation makes it easy to browse by product type, collection or material. Editorial brand stories are woven throughout the shopping experience, highlighting the design process, premium materials and production in family-owned Portuguese ateliers. Detailed product pages, accessible sizing information and clear delivery and return options support customers throughout their journey. The result is a distinctive international webshop that presents everyday essentials as carefully considered design objects—clean, functional and built to last.",
     client: "ETQ Amsterdam",
     focusMarket: "International",
     screenshots: ["Service overview", "Content page"],
-    image: "/ETQ.jpg",
+    image: "/ETQ.png",
     website: "https://www.etq-amsterdam.com",
   },
   {
@@ -95,7 +95,7 @@ const workItems: WorkItem[] = [
     name: "Only / Once",
     sector: "Design & Collectibles",
     brief:
-      "Only / Once collects and restores rare design objects with a distinctive history. Since 2013, the brand has curated timeless pieces from the twentieth century, ranging from Braun electronics and audio equipment to lighting, clocks and home accessories shaped by Bauhaus and modernist design. The website needed to function as more than a webshop: it had to communicate the cultural value, craftsmanship and individuality behind every object. We developed an editorial e-commerce experience in which collecting, storytelling and commerce come together naturally.",
+      "Only / Once collects and restores rare design objects with a distinctive history. Since 2013, the brand has curated timeless pieces from the twentieth century, ranging from Braun electronics and audio equipment to lighting, clocks and home accessories shaped by Bauhaus and modernist design. The website needed to function as more than a webshop: it had to communicate the cultural value, craftsmanship and individuality behind every object. I developed an editorial e-commerce experience in which collecting, storytelling and commerce come together naturally.",
     expandedTitle: "Giving design icons a new life",
     expandedBody:
       "The website presents each object as a unique piece of design history rather than simply another product. Large-scale imagery, restrained typography and spacious compositions create a gallery-like environment in which the form, details and patina of every collectible receive full attention. Clear product categories and curated collections make it easy to explore electronics, lighting, audio, clocks and lifestyle objects, while stories about Bauhaus, Braun and influential designers add context and depth. Detailed product pages communicate specifications, condition and shipping information, and sold items remain visible with restock notifications, reinforcing the rarity of the collection. The brand’s restoration process and respect for original functionality are woven throughout the experience, showing how each object is carefully reclaimed before beginning a new chapter in a contemporary interior. The result is a distinctive international platform that feels equal parts design archive, magazine and specialist store.",
