@@ -1,7 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ArrowUpRight, Minimize2, X } from "lucide-react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Maximize2, Minimize2, X } from "lucide-react";
+import Image from "next/image";
+import gsap from "gsap";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 type WorkItem = {
   name: string;
@@ -12,6 +16,8 @@ type WorkItem = {
   client: string;
   focusMarket: string;
   screenshots: string[];
+  image: string;
+  website: string;
 };
 
 const workItems: WorkItem[] = [
@@ -26,6 +32,8 @@ const workItems: WorkItem[] = [
     client: "Grassodenrider Architects",
     focusMarket: "National",
     screenshots: ["Homepage", "Project overview"],
+    image: "/grassodenridder.jpg",
+    website: "https://grassodenridder.nl",
   },
   {
     name: "Hardgraft",
@@ -38,6 +46,8 @@ const workItems: WorkItem[] = [
     client: "Hardgraft",
     focusMarket: "International",
     screenshots: ["Collection landing", "Product detail"],
+    image: "/images/hardgraft.jpg",
+    website: "https://hardgraft.com",
   },
   {
     name: "Credifin Netherlands",
@@ -50,20 +60,25 @@ const workItems: WorkItem[] = [
     client: "Credifin Netherlands",
     focusMarket: "National",
     screenshots: ["Service overview", "Content page"],
+    image: "/images/credifin-netherlands.jpg",
+    website: "https://credifin.nl",
   },
 ];
 
 export function WorkSection() {
   const [activeItem, setActiveItem] = useState<WorkItem | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const imageWrapperRef = useRef<HTMLDivElement | null>(null);
+  const backdropRef = useRef<HTMLDivElement | null>(null);
+  const modalRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!activeItem) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setActiveItem(null);
-        setIsExpanded(false);
+        handleClose();
       }
     };
 
@@ -77,14 +92,94 @@ export function WorkSection() {
     };
   }, [activeItem]);
 
+  useLayoutEffect(() => {
+    if (!activeItem || !imageWrapperRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        imageWrapperRef.current,
+        {
+          autoAlpha: 0,
+          y: isExpanded ? 18 : 28,
+          scale: isExpanded ? 1.015 : 1.04,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          duration: isExpanded ? 0.55 : 0.8,
+          ease: "power3.out",
+          clearProps: "transform,opacity,visibility",
+        }
+      );
+    }, imageWrapperRef);
+
+    return () => ctx.revert();
+  }, [activeItem, isExpanded]);
+
+  useLayoutEffect(() => {
+    if (!activeItem || !backdropRef.current || !modalRef.current || isClosing) return;
+
+    const ctx = gsap.context(() => {
+      gsap.set(backdropRef.current, { autoAlpha: 0 });
+      gsap.set(modalRef.current, { autoAlpha: 0, y: 18, scale: 0.985 });
+
+      const tl = gsap.timeline();
+      tl.to(backdropRef.current, {
+        autoAlpha: 1,
+        duration: 0.28,
+        ease: "power2.out",
+      }).to(
+        modalRef.current,
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.42,
+          ease: "power3.out",
+          clearProps: "transform,opacity,visibility",
+        },
+        0.04
+      );
+    });
+
+    return () => ctx.revert();
+  }, [activeItem, isClosing]);
+
   const handleOpen = (item: WorkItem) => {
     setActiveItem(item);
     setIsExpanded(false);
+    setIsClosing(false);
   };
 
   const handleClose = () => {
-    setActiveItem(null);
-    setIsExpanded(false);
+    if (!activeItem || isClosing) return;
+
+    setIsClosing(true);
+
+    gsap.timeline({
+      onComplete: () => {
+        setActiveItem(null);
+        setIsExpanded(false);
+        setIsClosing(false);
+      },
+    })
+      .to(modalRef.current, {
+        autoAlpha: 0,
+        y: 16,
+        scale: 0.985,
+        duration: 0.32,
+        ease: "power2.inOut",
+      })
+      .to(
+        backdropRef.current,
+        {
+          autoAlpha: 0,
+          duration: 0.38,
+          ease: "power2.out",
+        },
+        0.06
+      );
   };
 
   return (
@@ -119,10 +214,12 @@ export function WorkSection() {
 
       {activeItem ? (
         <div
+          ref={backdropRef}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 p-3 sm:p-6"
           onClick={handleClose}
         >
           <div
+            ref={modalRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby="work-modal-title"
@@ -143,9 +240,9 @@ export function WorkSection() {
                   >
                     {activeItem.name}
                   </h3>
-                  <p className="mt-2 font-piazzolla text-[15px] italic text-foreground/70">
+                  {/* <p className="mt-2 font-piazzolla text-[15px] italic text-foreground/70">
                     Sector • {activeItem.sector}
-                  </p>
+                  </p> */}
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -159,7 +256,7 @@ export function WorkSection() {
                     {isExpanded ? (
                       <Minimize2 className="size-4" />
                     ) : (
-                      <ArrowUpRight className="size-4" />
+                      <Maximize2 className="size-4" />
                     )}
                   </button>
 
@@ -179,24 +276,33 @@ export function WorkSection() {
               className={[
                 "min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:px-6 sm:py-6",
                 isExpanded
-                  ? "grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(280px,0.9fr)]"
+                  ? "grid gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(280px,0.4fr)]"
                   : "",
               ].join(" ")}
             >
               <div>
-                <p className="font-public-sans text-[15px] leading-7 text-foreground/85 sm:text-[16px]">
+                <div ref={imageWrapperRef} className="mb-8 overflow-hidden rounded-[0.5rem]">
+                  <Image
+                    src={activeItem.image}
+                    alt={activeItem.name}
+                    className="w-full rounded-[0.5rem]"
+                    width={600}
+                    height={400}
+                  />
+                </div>
+                <p className="font-piazzolla text-[15px] leading-7 text-foreground/85 sm:text-[16px]">
                   {activeItem.brief}
                 </p>
 
                 {isExpanded ? (
                   <div className="mt-8">
-                    <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
+                    {/* <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
                       Further detail
-                    </p>
-                    <h4 className="mt-3 font-public-sans text-xl font-semibold leading-tight text-foreground">
+                    </p> */}
+                    <h4 className="mt-3 font-piazzolla italic text-[25px] font-semibold leading-tight text-foreground">
                       {activeItem.expandedTitle}
                     </h4>
-                    <p className="mt-3 font-public-sans text-[15px] leading-7 text-foreground/85 sm:text-[16px]">
+                    <p className="mt-3 font-piazzolla text-[15px] leading-7 text-foreground/85 sm:text-[16px]">
                       {activeItem.expandedBody}
                     </p>
                   </div>
@@ -204,7 +310,7 @@ export function WorkSection() {
               </div>
 
               {isExpanded ? (
-                <aside className="border-t border-foreground/10 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+                <aside className="border-t border-foreground/10 pt-6 lg:sticky lg:top-0 lg:self-start lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
                   <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
                     Snapshot
                   </p>
@@ -213,7 +319,7 @@ export function WorkSection() {
                       <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
                         Client
                       </dt>
-                      <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
+                      <dd className="mt-1 font-piazzolla font-medium text-[15px] text-foreground/85">
                         {activeItem.client}
                       </dd>
                     </div>
@@ -221,7 +327,7 @@ export function WorkSection() {
                       <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
                         Sector
                       </dt>
-                      <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
+                      <dd className="mt-1 font-piazzolla font-medium text-[15px] text-foreground/85">
                         {activeItem.sector}
                       </dd>
                     </div>
@@ -229,13 +335,18 @@ export function WorkSection() {
                       <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
                         Focus market
                       </dt>
-                      <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
+                      <dd className="mt-1 font-piazzolla font-medium text-[15px] text-foreground/85">
                         {activeItem.focusMarket}
                       </dd>
                     </div>
+                    <div>
+                      <Link href={activeItem.website} target="_blank" rel="noopener noreferrer">
+                        <Button className="w-full mt-4 font-public-sans">View Website</Button>
+                      </Link>
+                    </div>
                   </dl>
 
-                  <div className="mt-8">
+                  <div className="mt-8 hidden">
                     <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
                       Screenshots
                     </p>
