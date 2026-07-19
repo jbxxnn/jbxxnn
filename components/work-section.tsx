@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Maximize2, Minimize2, X } from "lucide-react";
+import { ArrowUpRight, Maximize2, Minimize2, X } from "lucide-react";
 import Image from "next/image";
 import gsap from "gsap";
-import { Button } from "./ui/button";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 type WorkItem = {
   name: string;
@@ -39,29 +39,71 @@ const workItems: WorkItem[] = [
     name: "Hardgraft",
     sector: "Fashion & Lifestyle",
     brief:
-      "Hardgraft needed a sharper digital presentation for a premium product line, with an interface that felt as considered as the objects themselves and gave more space to material, detail, and atmosphere.",
-    expandedTitle: "A product world with more restraint",
+      "Hardgraft creates timeless bags, footwear and leather accessories for people who value quality, character and thoughtful design. As an independent brand with a worldwide audience, they needed a digital environment that could communicate the craftsmanship behind each product while preserving the quiet, understated personality that defines the brand. We developed a refined e-commerce website that brings product, material and story together, creating an online experience that feels as considered and distinctive as the collection itself.",
+    expandedTitle: "A digital experience built around craftsmanship",
     expandedBody:
-      "We approached the experience as an editorial retail system rather than a conventional catalogue. Typography, spacing, and image hierarchy were refined to slow the pace down and let product detail carry more weight. The result is a cleaner digital language that supports the brand's premium positioning while improving clarity across browsing and storytelling.",
+      "The website combines a restrained visual style with generous imagery and a clear product structure, allowing the materials, textures and details of each piece to take centre stage. Visitors can effortlessly explore bags, footwear and small leather goods while discovering the Italian craftsmanship and carefully selected materials behind the collection. Natural tones, spacious compositions and understated typography reinforce hardgraft's down-to-earth aesthetic. Detailed product presentations and stories about the leather, wool and production process give every item greater depth and make the brand's commitment to quality tangible. The result is a distinctive international webshop that does not compete for attention, but builds desire through simplicity, authenticity and craftsmanship.",
     client: "Hardgraft",
     focusMarket: "International",
     screenshots: ["Collection landing", "Product detail"],
-    image: "/images/hardgraft.jpg",
+    image: "/hardgraft.jpg",
     website: "https://hardgraft.com",
   },
   {
     name: "Credifin Netherlands",
     sector: "Finance",
     brief:
-      "Credifin wanted a more credible and modern online presence that could explain its services with greater clarity while keeping the tone calm, professional, and accessible.",
-    expandedTitle: "Clarity as a trust signal",
+      "Credifin was looking for an identity and website that better suited the quality they deliver. The old appearance and structure no longer did justice to their story, while the website is an important channel with a lot of traffic and dozens of new accounts daily. As a modern debt collection platform with more than 20,000 customers, they were ready for the next step. We developed a mature brand identity and a lead-generating website that clearly shows what Credifin stands for.",
+    expandedTitle: "A brand that exudes trust",
     expandedBody:
-      "The redesign focused on structure, readability, and reassurance. We simplified the information architecture, tightened the visual system, and introduced a more consistent presentation across key service pages. This made the company easier to understand at a glance and strengthened the sense of reliability expected in a financial context.",
+      "We developed a brand identity that combines strength and clarity with a human tone. From a sharpened logo and fresh color palette to an accessible tone of voice and illustration style. The new branding shows what Credifin stands for: transparency, decisiveness and an approachable approach that gives confidence. The result is an identity that is distinctive in the market and seamlessly aligns with the digital nature of the platform.",
     client: "Credifin Netherlands",
     focusMarket: "National",
     screenshots: ["Service overview", "Content page"],
-    image: "/images/credifin-netherlands.jpg",
-    website: "https://credifin.nl",
+    image: "/credifin.jpg",
+    website: "https://credifin.com",
+  },
+  {
+    name: "ETQ Amsterdam",
+    sector: "Fashion & Lifestyle",
+    brief:
+      "ETQ Amsterdam creates refined wardrobe essentials for men who value simplicity, quality and longevity. With a growing collection spanning footwear, clothing and accessories, the brand needed an online store that could present its products clearly without losing the clean and mature character at the heart of its identity. We created a minimalist e-commerce experience that combines strong product presentation with intuitive navigation, allowing customers to move effortlessly from inspiration to purchase.",
+    expandedTitle: "Less, but better",
+    expandedBody:
+      "The website translates ETQ’s philosophy into a restrained and confident digital experience. Generous imagery, neutral compositions and bold typography give every product room to stand out, while the structured navigation makes it easy to browse by product type, collection or material. Editorial brand stories are woven throughout the shopping experience, highlighting the design process, premium materials and production in family-owned Portuguese ateliers. Detailed product pages, accessible sizing information and clear delivery and return options support customers throughout their journey. The result is a distinctive international webshop that presents everyday essentials as carefully considered design objects—clean, functional and built to last.",
+    client: "ETQ Amsterdam",
+    focusMarket: "International",
+    screenshots: ["Service overview", "Content page"],
+    image: "/ETQ.jpg",
+    website: "https://www.etq-amsterdam.com",
+  },
+  {
+    name: "Zonnelux Window Decoration, Veghel",
+    sector: "Lifestyle",
+    brief:
+      "Zonnelux has been active in window decoration for years. They operate in the higher segment with stylish custom products. Within the industry, more and more stunters are active, which often sell directly via the internet. Zonnelux wants to distinguish itself strongly from this as a premium brand by offering the consumer a personal experience. In this way, the consumer can experience the quality himself by seeing and touching it.",
+    expandedTitle: "From inspiration to seduction",
+    expandedBody:
+      "I developed an inspiring website for Zonnelux that informs, inspires and seduces potential buyers. The spacious site is full of atmospheric images and an extensive inspiration database in which each product is shown in different styles. Thanks to the clear navigation structure, the visitor can effortlessly click from inspiration to the desired product. All product information is clearly presented there, which ensures a seamless and user-friendly experience.",
+    client: "Zonnelux",
+    focusMarket: "Benelux",
+    screenshots: ["Service overview", "Content page"],
+    image: "/zonnelux.jpg",
+    website: "https://www.zonnelux.com",
+  },
+  {
+    name: "Only / Once",
+    sector: "Design & Collectibles",
+    brief:
+      "Only / Once collects and restores rare design objects with a distinctive history. Since 2013, the brand has curated timeless pieces from the twentieth century, ranging from Braun electronics and audio equipment to lighting, clocks and home accessories shaped by Bauhaus and modernist design. The website needed to function as more than a webshop: it had to communicate the cultural value, craftsmanship and individuality behind every object. We developed an editorial e-commerce experience in which collecting, storytelling and commerce come together naturally.",
+    expandedTitle: "Giving design icons a new life",
+    expandedBody:
+      "The website presents each object as a unique piece of design history rather than simply another product. Large-scale imagery, restrained typography and spacious compositions create a gallery-like environment in which the form, details and patina of every collectible receive full attention. Clear product categories and curated collections make it easy to explore electronics, lighting, audio, clocks and lifestyle objects, while stories about Bauhaus, Braun and influential designers add context and depth. Detailed product pages communicate specifications, condition and shipping information, and sold items remain visible with restock notifications, reinforcing the rarity of the collection. The brand’s restoration process and respect for original functionality are woven throughout the experience, showing how each object is carefully reclaimed before beginning a new chapter in a contemporary interior. The result is a distinctive international platform that feels equal parts design archive, magazine and specialist store.",
+    client: "Only / Once",
+    focusMarket: "International",
+    screenshots: ["Service overview", "Content page"],
+    image: "/onlyonce.jpg",
+    website: "https://www.onlyonceshop.com",
   },
 ];
 
@@ -197,7 +239,7 @@ export function WorkSection() {
               key={item.name}
               type="button"
               onClick={() => handleOpen(item)}
-              className="mb-[2px] grid w-full gap-4 bg-container px-5 py-3 text-left transition-colors duration-300 hover:cursor-pointer hover:bg-foreground/5"
+              className="group mb-[2px] grid w-full grid-cols-[minmax(0,1fr)_auto] items-start gap-4 bg-container px-5 py-3 text-left transition-colors duration-300 hover:cursor-pointer hover:bg-foreground/5"
             >
               <div>
                 <h3 className="font-public-sans text-[16px] font-semibold leading-none">
@@ -207,6 +249,10 @@ export function WorkSection() {
                   Sector • {item.sector}
                 </p>
               </div>
+
+              <span className="mt-0.5 inline-flex text-foreground/55 transition-transform duration-300 group-hover:translate-x-0.5">
+                <ArrowUpRight className="size-4" />
+              </span>
             </button>
           ))}
         </div>
@@ -215,7 +261,7 @@ export function WorkSection() {
       {activeItem ? (
         <div
           ref={backdropRef}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 p-3 sm:p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/35 backdrop-blur-md sm:backdrop-blur-lg p-3 sm:p-6"
           onClick={handleClose}
         >
           <div
