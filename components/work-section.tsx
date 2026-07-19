@@ -5,52 +5,51 @@ import { ArrowUpRight, Minimize2, X } from "lucide-react";
 
 type WorkItem = {
   name: string;
-  description: string;
-  role: string;
-  years: string;
-  overview: string;
-  highlights: string[];
+  sector: string;
+  brief: string;
+  expandedTitle: string;
+  expandedBody: string;
+  client: string;
+  focusMarket: string;
+  screenshots: string[];
 };
 
 const workItems: WorkItem[] = [
   {
     name: "Grassodenrider Architects",
-    description: "Sector • Construction",
-    role: "Founder",
-    years: "2024-",
-    overview:
-      "UNMS is a design and research practice focused on building sharper digital systems, clearer products, and better decision-making tools.",
-    highlights: [
-      "Established the lab and shaped its positioning, direction, and client work.",
-      "Leads design systems, product research, and web experiences across experiments and engagements.",
-      "Uses the practice as a base for long-term product exploration and applied design thinking.",
-    ],
+    sector: "Construction",
+    brief:
+      "On the occasion of their 15th anniversary, Grassodenridder Architects wanted an identity and website that reflected the growth and refinement of the agency. The existing appearance no longer did justice to the quality of their work and did not sufficiently show online what the agency stands for: timeless architecture in which interior, experience and environment form one whole. We developed a minimalist, characterful brand identity and a website that makes that vision felt, with a digital style that breathes peace, precision and craftsmanship.",
+    expandedTitle: "A brand that captures the essence",
+    expandedBody:
+      "The new identity translates the architectural vision of Grassodenridder Architecten into a powerful and timeless brand. With a refined logo, a clear typographic system and a subdued color palette, we created a style that exudes peace, precision and craftsmanship. The subtle line, generous white space and balanced compositions ensure a recognizable visual language that consistently returns in all expressions. This creates a brand that not only reflects the quality of the work, but also makes it palpable in every moment of contact.",
+    client: "Grassodenrider Architects",
+    focusMarket: "National",
+    screenshots: ["Homepage", "Project overview"],
   },
   {
     name: "Hardgraft",
-    description: "Sector • Fashion & Lifestyle",
-    role: "Co-founder/CEO",
-    years: "2019-2022",
-    overview:
-      "Clew built tools intended to improve digital work by making information easier to organize, retrieve, and act on.",
-    highlights: [
-      "Co-founded the company and led strategy, product direction, and execution.",
-      "Worked across product design, company building, and operational decision-making.",
-      "Focused on utility, clarity, and practical workflows for teams doing knowledge work.",
-    ],
+    sector: "Fashion & Lifestyle",
+    brief:
+      "Hardgraft needed a sharper digital presentation for a premium product line, with an interface that felt as considered as the objects themselves and gave more space to material, detail, and atmosphere.",
+    expandedTitle: "A product world with more restraint",
+    expandedBody:
+      "We approached the experience as an editorial retail system rather than a conventional catalogue. Typography, spacing, and image hierarchy were refined to slow the pace down and let product detail carry more weight. The result is a cleaner digital language that supports the brand's premium positioning while improving clarity across browsing and storytelling.",
+    client: "Hardgraft",
+    focusMarket: "International",
+    screenshots: ["Collection landing", "Product detail"],
   },
   {
     name: "Credifin Netherlands",
-    description: "Sector • Finance",
-    role: "Co-founder",
-    years: "2016-2018",
-    overview:
-      "Alcamy combined software and community to create tools that helped people learn, improve, and share knowledge more effectively.",
-    highlights: [
-      "Co-founded the platform and helped define its learning-first product direction.",
-      "Built early product experiences and supported community growth.",
-      "Explored how software can make expertise more accessible and usable.",
-    ],
+    sector: "Finance",
+    brief:
+      "Credifin wanted a more credible and modern online presence that could explain its services with greater clarity while keeping the tone calm, professional, and accessible.",
+    expandedTitle: "Clarity as a trust signal",
+    expandedBody:
+      "The redesign focused on structure, readability, and reassurance. We simplified the information architecture, tightened the visual system, and introduced a more consistent presentation across key service pages. This made the company easier to understand at a glance and strengthened the sense of reliability expected in a financial context.",
+    client: "Credifin Netherlands",
+    focusMarket: "National",
+    screenshots: ["Service overview", "Content page"],
   },
 ];
 
@@ -64,6 +63,7 @@ export function WorkSection() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setActiveItem(null);
+        setIsExpanded(false);
       }
     };
 
@@ -102,21 +102,15 @@ export function WorkSection() {
               key={item.name}
               type="button"
               onClick={() => handleOpen(item)}
-              className={[
-                "grid w-full gap-4 bg-container px-5 py-3 mb-[2px] text-left transition-colors duration-300 hover:cursor-pointer hover:bg-foreground/5 sm:grid-cols-[minmax(0,1fr)_auto]",
-                // index < workItems.length - 1 ? "border-b border-black/30" : "",
-              ].join(" ")}
+              className="mb-[2px] grid w-full gap-4 bg-container px-5 py-3 text-left transition-colors duration-300 hover:cursor-pointer hover:bg-foreground/5"
             >
               <div>
                 <h3 className="font-public-sans text-[16px] font-semibold leading-none">
                   {item.name}
                 </h3>
-                <p className="font-piazzolla italic text-[14px]">{item.description}</p>
-              </div>
-
-              <div className="hidden text-left sm:text-right">
-                <p className="font-public-sans text-[12px] uppercase">{item.role}</p>
-                <p className="font-public-sans text-[12px]">{item.years}</p>
+                <p className="font-piazzolla text-[14px] italic">
+                  Sector • {item.sector}
+                </p>
               </div>
             </button>
           ))}
@@ -125,12 +119,8 @@ export function WorkSection() {
 
       {activeItem ? (
         <div
-          className="fixed inset-0 z-50 flex items-end bg-black/45 p-3 sm:items-center sm:justify-center sm:p-6"
-          onClick={() => {
-            if (!isExpanded) {
-              handleClose();
-            }
-          }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 p-3 sm:p-6"
+          onClick={handleClose}
         >
           <div
             role="dialog"
@@ -138,27 +128,23 @@ export function WorkSection() {
             aria-labelledby="work-modal-title"
             className={[
               "flex w-full flex-col overflow-hidden bg-background shadow-2xl transition-all duration-300 ease-out",
-              "h-[100dvh] rounded-none sm:h-auto",
               isExpanded
-                ? "sm:h-[92vh] sm:max-w-[1100px] sm:rounded-[1.5rem]"
-                : "sm:max-h-[80vh] sm:max-w-2xl sm:rounded-[1.25rem]",
+                ? "h-[calc(100dvh-2rem)] max-w-4xl rounded-[1.5rem] sm:h-[calc(100dvh-5rem)]"
+                : "h-[520px] max-w-xl rounded-[1.25rem] sm:h-[min(520px,calc(100dvh-5rem))]",
             ].join(" ")}
             onClick={(event) => event.stopPropagation()}
           >
             <div className="border-b border-foreground/10 px-5 py-4 sm:px-6 sm:py-5">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
-                    {activeItem.role} • {activeItem.years}
-                  </p>
                   <h3
                     id="work-modal-title"
-                    className="mt-2 font-public-sans text-2xl font-semibold leading-none sm:text-3xl"
+                    className="font-public-sans text-2xl font-semibold leading-none sm:text-3xl"
                   >
                     {activeItem.name}
                   </h3>
-                  <p className="mt-2 font-public-sans text-[15px] text-foreground/70">
-                    {activeItem.description}
+                  <p className="mt-2 font-piazzolla text-[15px] italic text-foreground/70">
+                    Sector • {activeItem.sector}
                   </p>
                 </div>
 
@@ -167,7 +153,7 @@ export function WorkSection() {
                     type="button"
                     onClick={() => setIsExpanded((current) => !current)}
                     className="inline-flex rounded-full border border-foreground/15 p-2 text-foreground/70 transition-colors hover:bg-foreground/5 hover:text-foreground"
-                    aria-label={isExpanded ? "Collapse work details" : "Expand work details"}
+                    aria-label={isExpanded ? "Collapse case study" : "Expand case study"}
                     title={isExpanded ? "Collapse" : "Expand"}
                   >
                     {isExpanded ? (
@@ -193,71 +179,84 @@ export function WorkSection() {
               className={[
                 "min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:px-6 sm:py-6",
                 isExpanded
-                  ? "sm:grid sm:grid-cols-[minmax(0,1.25fr)_minmax(240px,0.75fr)] sm:gap-10"
+                  ? "grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(280px,0.9fr)]"
                   : "",
               ].join(" ")}
             >
               <div>
-                <div>
-                  <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
-                    Overview
-                  </p>
-                  <p className="mt-3 font-public-sans text-[15px] leading-7 text-foreground/85 sm:text-[16px]">
-                    {activeItem.overview}
-                  </p>
-                </div>
+                <p className="font-public-sans text-[15px] leading-7 text-foreground/85 sm:text-[16px]">
+                  {activeItem.brief}
+                </p>
 
-                <div className="mt-8">
-                  <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
-                    Notes
-                  </p>
-                  <ul className="mt-3 space-y-3 font-public-sans text-[15px] leading-7 text-foreground/85">
-                    {activeItem.highlights.map((highlight) => (
-                      <li key={highlight}>{highlight}</li>
-                    ))}
-                  </ul>
-                </div>
+                {isExpanded ? (
+                  <div className="mt-8">
+                    <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
+                      Further detail
+                    </p>
+                    <h4 className="mt-3 font-public-sans text-xl font-semibold leading-tight text-foreground">
+                      {activeItem.expandedTitle}
+                    </h4>
+                    <p className="mt-3 font-public-sans text-[15px] leading-7 text-foreground/85 sm:text-[16px]">
+                      {activeItem.expandedBody}
+                    </p>
+                  </div>
+                ) : null}
               </div>
 
-              <aside className="mt-8 border-t border-foreground/10 pt-6 sm:mt-0 sm:border-t-0 sm:border-l sm:pl-8 sm:pt-0">
-                <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
-                  Snapshot
-                </p>
-                <dl className="mt-4 space-y-5">
-                  <div>
-                    <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
-                      Company
-                    </dt>
-                    <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
-                      {activeItem.name}
-                    </dd>
+              {isExpanded ? (
+                <aside className="border-t border-foreground/10 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+                  <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
+                    Snapshot
+                  </p>
+                  <dl className="mt-4 space-y-5">
+                    <div>
+                      <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
+                        Client
+                      </dt>
+                      <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
+                        {activeItem.client}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
+                        Sector
+                      </dt>
+                      <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
+                        {activeItem.sector}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
+                        Focus market
+                      </dt>
+                      <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
+                        {activeItem.focusMarket}
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <div className="mt-8">
+                    <p className="font-public-sans text-[12px] uppercase tracking-[0.12em] text-foreground/60">
+                      Screenshots
+                    </p>
+                    <div className="mt-4 space-y-4">
+                      {activeItem.screenshots.map((shot) => (
+                        <div
+                          key={shot}
+                          className="overflow-hidden rounded-[1rem] border border-foreground/10 bg-container"
+                        >
+                          <div className="aspect-[4/3] bg-gradient-to-br from-foreground/5 via-transparent to-foreground/10" />
+                          <div className="border-t border-foreground/10 px-4 py-3">
+                            <p className="font-public-sans text-[14px] text-foreground/75">
+                              {shot}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div>
-                    <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
-                      Focus
-                    </dt>
-                    <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
-                      {activeItem.description}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
-                      Role
-                    </dt>
-                    <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
-                      {activeItem.role}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="font-public-sans text-[12px] uppercase tracking-[0.1em] text-foreground/55">
-                      Timeline
-                    </dt>
-                    <dd className="mt-1 font-public-sans text-[15px] text-foreground/85">
-                      {activeItem.years}
-                    </dd>
-                  </div>
-                </dl>
-              </aside>
+                </aside>
+              ) : null}
             </div>
           </div>
         </div>
