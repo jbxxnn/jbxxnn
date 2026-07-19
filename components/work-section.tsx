@@ -13,8 +13,8 @@ type WorkItem = {
 
 const workItems: WorkItem[] = [
   {
-    name: "UNMS",
-    description: "Design & Research Lab",
+    name: "Grassodenrider Architects",
+    description: "Sector • Construction",
     role: "Founder",
     years: "2024-",
     overview:
@@ -26,8 +26,8 @@ const workItems: WorkItem[] = [
     ],
   },
   {
-    name: "Clew",
-    description: "Startup • Tools for digital work",
+    name: "Hardgraft",
+    description: "Sector • Fashion & Lifestyle",
     role: "Co-founder/CEO",
     years: "2019-2022",
     overview:
@@ -39,8 +39,8 @@ const workItems: WorkItem[] = [
     ],
   },
   {
-    name: "Alcamy",
-    description: "Software & community • Tools for learning",
+    name: "Credifin Netherlands",
+    description: "Sector • Finance",
     role: "Co-founder",
     years: "2016-2018",
     overview:
@@ -99,7 +99,7 @@ export function WorkSection() {
                 <h3 className="font-public-sans text-[16px] font-semibold leading-none">
                   {item.name}
                 </h3>
-                <p className="font-public-sans text-[14px]">{item.description}</p>
+                <p className="font-piazzolla italic text-[14px]">{item.description}</p>
               </div>
 
               <div className="hidden text-left sm:text-right">
